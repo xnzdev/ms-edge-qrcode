@@ -1,0 +1,26 @@
+{
+  "name": "Best QRcode(快速生成二维码)",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "A Chromium Extension to show the QRcode of the link.",
+  "icons": {
+    "128": "icons/icon-128x128.png"
+  },
+  "browser_action": {
+    "default_popup": "/index.html"
+  },
+  "permissions": ["tabs"],
+  // 引入注入脚本
+  // "content_scripts": [
+  //   {
+  //     "js": ["popup.js"],
+  //     // 在什么情况下使用该脚本
+  //     "matches": ["http://*/*", "https://*/*"],
+  //     // 什么情况下运行【文档加载开始】
+  //     "run_at": "document_start"
+  //   }
+  // ],
+  "background": {
+    "scripts": ["popup.js"]
+  }
+}
