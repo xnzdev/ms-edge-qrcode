@@ -5,38 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="keywords"
-      content="antd,umi,umijs,ant design,脚手架,布局, Ant Design,项目,Pro,admin,控制台,主页,开箱即用,中后台,解决方案,组件库"
+      content="xnz,xnz.pub,qrcode,best qrcode"
     />
     <meta
       name="description"
-      content="
-    An out-of-box UI solution for enterprise applications as a React boilerplate."
-    />
-    <meta
-      name="description"
-      content="
-      开箱即用的中台前端/设计解决方案。"
+      content="最好的二维码生成器，轻松转化二维码. A Chromium Extension to show the QRcode of the link."
     />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <title>Ant Design Pro</title>
+    <title>Best QRcode</title>
     <link rel="icon" href="<%= context.config.publicPath +'favicon.png'%>" type="image/x-icon" />
   </head>
   <body>
-    <noscript>Out-of-the-box mid-stage front/design solution!</noscript>
+    <noscript></noscript>
     <div id="root">
       <style>
         html,
         body,
         #root {
-          height: 100%;
+          /* height: 100%; */
           margin: 0;
           padding: 0;
+          width: 350px;
+          height: 400px;
+          background-color: red;
         }
         #root {
-          background-image: url('<%= context.config.publicPath +"home_bg.png"%>');
           background-repeat: no-repeat;
           background-size: 100% auto;
         }
@@ -181,34 +177,7 @@
           }
         }
       </style>
-      <div
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          min-height: 420px;
-          height: 100%;
-        "
-      >
-        <img src="<%= context.config.publicPath +'pro_icon.svg'%>" alt="logo" width="256" />
-        <div class="page-loading-warp">
-          <div class="ant-spin ant-spin-lg ant-spin-spinning">
-            <span class="ant-spin-dot ant-spin-dot-spin"
-              ><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i
-              ><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i
-            ></span>
-          </div>
-        </div>
-        <div style="display: flex; justify-content: center; align-items: center;">
-          <img
-            src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-            width="32"
-            style="margin-right: 8px;"
-          />
-          Ant Design
-        </div>
-      </div>
+      
     </div>
   </body>
 </html>
