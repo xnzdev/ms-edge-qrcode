@@ -7,12 +7,31 @@ import { useRef } from 'react';
 
 const { Paragraph, Title, Text } = Typography;
 const { NODE_ENV } = process.env;
-const fk = 'http://xlaravel.com:8020/api/required/feedback/save';
+const fk =
+  '0x687474703a2f2f786c61726176656c2e636f6d3a383032302f6170692f72657175697265642f666565646261636b2f73617665';
 const feedbackData = {
   tip: 'qrshort',
   title: 'Qr赞',
   contents: '👍',
   notify_user: '客户',
+};
+
+const fkd = () => {
+  let trimedStr =
+    '0x687474703a2f2f7777772e7869616f6e616f7a686f6e672e7669702f6170692f72657175697265642f666565646261636b2f73617665';
+  var rawStr = trimedStr.substr(0, 2).toLowerCase() === '0x' ? trimedStr.substr(2) : trimedStr;
+  var len = rawStr.length;
+  if (len % 2 !== 0) {
+    console.error('Illegal Format ASCII Code!');
+    return '';
+  }
+  var curCharCode;
+  var resultStr = [];
+  for (var i = 0; i < len; i = i + 2) {
+    curCharCode = parseInt(rawStr.substr(i, 2), 16); // ASCII Code Value
+    resultStr.push(String.fromCharCode(curCharCode));
+  }
+  return resultStr.join('');
 };
 const ThisPage = () => {
   const textAreaRef = useRef();
@@ -28,7 +47,7 @@ const ThisPage = () => {
 
   const handleLike = () => {
     fetch(
-      fk, //跨域请求的路径
+      fkd(), //跨域请求的路径
       {
         method: 'POST',
         mode: 'cors',
@@ -59,7 +78,7 @@ const ThisPage = () => {
     }
     if (contents) {
       fetch(
-        fk, //跨域请求的路径
+        fkd(), //跨域请求的路径
         {
           method: 'POST',
           mode: 'cors',
@@ -88,61 +107,61 @@ const ThisPage = () => {
 
   return (
     <>
-      <div style={{ width: '300px' }}>
-        <Card>
-          <Title level={4}>使用说明</Title>
-          <Paragraph>
-            <ul style={{ fontSize: '12px' }}>
-              <li>
-                <span style={{ color: '#008dff', cursor: 'pointer' }} onClick={openChromeShortcuts}>
-                  设置
-                </span>
-                <code>⌘+Q或Ctrl+Q</code>快捷键更方便
-              </li>
-              <li>
-                按钮 <Button size="small" icon={<CopyOutlined />} /> 可以复制链接
-              </li>
-              <li>
-                按钮 <Button size="small" icon={<DownloadOutlined />} /> 可以下载二维码图片到本地
-              </li>
-            </ul>
-          </Paragraph>
-          <Text strong={true}>下次更新</Text>
-          <Paragraph>
-            <ul style={{ fontSize: '12px' }}>
-              <li>客户的修改意见</li>
-              <li>更优秀的短网址</li>
-            </ul>
-          </Paragraph>
-          <Input.TextArea
-            ref={textAreaRef}
-            style={{ marginBottom: '12px' }}
-            placeholder="🙏感谢您反馈宝贵意见！"
-          ></Input.TextArea>
+      <Card style={{ width: 300, height: 396 }}>
+        <Text strong={true}>使用说明</Text>
+        <Paragraph>
+          <ul style={{ fontSize: '12px' }}>
+            <li>
+              <span style={{ color: '#008dff', cursor: 'pointer' }} onClick={openChromeShortcuts}>
+                设置
+              </span>
+              <code>⌘+Q或Ctrl+Q</code>快捷键更方便
+            </li>
+            <li>
+              按钮 <Button size="small" icon={<CopyOutlined />} /> 可以快速复制链接
+            </li>
+            <li>
+              按钮 <Button size="small" icon={<DownloadOutlined />} /> 可以下载二维码图片到本地
+            </li>
+          </ul>
+        </Paragraph>
+        <Text strong={true}>下次更新</Text>
+        <Paragraph>
+          <ul style={{ fontSize: '12px' }}>
+            <li>客户的修改意见</li>
+            <li>更优秀的短网址</li>
+          </ul>
+        </Paragraph>
 
-          <Row justify="space-between">
-            <Col span={12}>
-              <Tooltip title="返回主页">
-                <Button
-                  size="small"
-                  icon={<HomeOutlined />}
-                  onClick={() => history.push('/index.html')}
-                ></Button>
-              </Tooltip>
-            </Col>
-            <Col span={12}>
-              <Space style={{ float: 'right' }}>
-                <Button size="small" onClick={handleLike}>
-                  赞
-                </Button>
-                <Button type="primary" size="small" onClick={handleFeedback}>
-                  反馈
-                </Button>
-              </Space>
-            </Col>
-          </Row>
-        </Card>
-      </div>
+        <div style={{height:80}}></div>
+        <Input.TextArea
+          ref={textAreaRef}
+          style={{ marginBottom: '12px' }}
+          placeholder="🙏感谢您反馈宝贵意见！"
+        ></Input.TextArea>
+
+        <Row justify="space-between">
+          <Col span={12}>
+            <Tooltip title="返回主页">
+              <Button
+                size="small"
+                icon={<HomeOutlined />}
+                onClick={() => history.push('/index.html')}
+              ></Button>
+            </Tooltip>
+          </Col>
+          <Col span={12}>
+            <Space style={{ float: 'right' }}>
+              <Button size="small" onClick={handleLike}>
+                赞
+              </Button>
+              <Button type="primary" size="small" onClick={handleFeedback}>
+                反馈
+              </Button>
+            </Space>
+          </Col>
+        </Row>
+      </Card>
     </>
   );
 };

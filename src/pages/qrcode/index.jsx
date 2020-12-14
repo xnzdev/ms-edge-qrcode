@@ -1,9 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Card, Input, Button, Tooltip, message, Typography, Space, Row, Col, Divider } from 'antd';
+import { Card, Input, Button, Tooltip, Typography, Space, Row, Col } from 'antd';
 import QRCode from 'qrcode.react';
 import {
   DownloadOutlined,
-  LinkOutlined,
   CopyOutlined,
   SettingOutlined,
   CheckOutlined,
@@ -66,7 +65,7 @@ const ThisPage = () => {
   };
   return (
     <>
-      <Card style={{ width: 300 }}>
+      <Card style={{ width: 300, height:396 }}>
         <Space direction={'vertical'}>
           <QRCode id="BEST_QRCODE" value={curLink} size={252} />
           <Input.TextArea value={curLink} onChange={onTextAreaChange} style={{ resize: 'none' }} />
