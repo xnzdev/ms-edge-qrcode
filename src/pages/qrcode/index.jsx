@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Card, Input, Button, Form, Tooltip, message, Typography, Space } from 'antd';
+import { Card, Input, Button, Tooltip, message, Typography, Space, Row, Col, Divider } from 'antd';
 import QRCode from 'qrcode.react';
 import {
   DownloadOutlined,
@@ -8,11 +8,13 @@ import {
   SettingOutlined,
   CheckOutlined,
 } from '@ant-design/icons';
-import { Link } from 'umi';
+import { history } from 'umi';
 import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 
 const { Paragraph } = Typography;
+const { NODE_ENV } = process.env;
+
 const ThisPage = () => {
   const [curLink, setCurLink] = useState('http://xnz.pub');
   const [btnIcon, setBtnIcon] = useState(<CopyOutlined />);
@@ -34,21 +36,24 @@ const ThisPage = () => {
 
   useEffect(() => {
     function onLoaded() {
-      chrome.tabs.getSelected(null, function (tab) {
-        setCurLink(tab.url);
-      });
+      if (NODE_ENV === 'development') {
+        setCurLink(window.location.href);
+      } else {
+        chrome.tabs.getSelected(null, function (tab) {
+          setCurLink(tab.url);
+        });
+      }
       // console.log(window.location.href)
-      // setCurLink(window.location.href);
     }
     onLoaded();
   }, []);
 
   const downLoadQrcode = (event) => {
     const downLoadFileName = 'best_qrcode_' + new Date().getTime() + '.png';
-    const Qr = document.getElementById("BEST_QRCODE");
+    const Qr = document.getElementById('BEST_QRCODE');
     let image = new Image();
-    image.src = Qr.toDataURL("image/png");
-  
+    image.src = Qr.toDataURL('image/png');
+
     const link = document.createElement('a');
     const evt = document.createEvent('MouseEvents');
     link.style.display = 'none';
@@ -64,24 +69,32 @@ const ThisPage = () => {
       <Card style={{ width: 300 }}>
         <Space direction={'vertical'}>
           <QRCode id="BEST_QRCODE" value={curLink} size={252} />
-          <Input.TextArea value={curLink} onChange={onTextAreaChange} style={{resize:'none'}} />
-          <Space size="large">
-            <Tooltip title={copyTip}>
-              <Button size="small" icon={btnIcon} onClick={copyBtnHandle} />
-            </Tooltip>
-            <Tooltip title="保存二维码">
-              <Button size="small" icon={<DownloadOutlined />} onClick={downLoadQrcode} />
-            </Tooltip>
-          </Space>
-          {/* <Paragraph copyable={{ text: 'http://xnz.pub' }}>
-            在线短链
-            <LinkOutlined /> http://xnz.pub
-          </Paragraph> */}
+          <Input.TextArea value={curLink} onChange={onTextAreaChange} style={{ resize: 'none' }} />
+          <Row justify="space-between">
+            <Col span={16}>
+              <Space size="large">
+                <Tooltip title={copyTip}>
+                  <Button size="small" icon={btnIcon} onClick={copyBtnHandle} />
+                </Tooltip>
 
-          {/* <Link to="/settings">
-            <SettingOutlined />官方 / 反馈
-          </Link> */}
+                <Tooltip title="保存二维码">
+                  <Button size="small" icon={<DownloadOutlined />} onClick={downLoadQrcode} />
+                </Tooltip>
+              </Space>
+            </Col>
+            <Col span={8} style={{ textAlign: 'right' }}>
+              <Tooltip title="官方设置">
+                <Button
+                  size="small"
+                  icon={<SettingOutlined />}
+                  onClick={() => history.push('/settings')}
+                ></Button>
+              </Tooltip>
+            </Col>
+          </Row>
+          
         </Space>
+        
       </Card>
     </>
   );
