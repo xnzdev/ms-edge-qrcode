@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/jqr.js"></script>
+<link rel='stylesheet' href='assets/css/popup.style.css' type='text/css' media='all' />
+</head>
+<body>
+<div class="popup-center">
+<div id="qrcode-img"></div>
+<div id="qrcode-img-buffer"></div>
+<div id="qrcode-title"></div>
+<textarea id="qrcode-href" value=""></textarea>
+<div class="high-qr">
+  <a target="_blank" id="export" href="https://high-qr-code-generator.com/?hd=1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="24px" height="16px" viewBox="0 0 575 380"><defs><g id="ax7"><path fill="#777" stroke="none" d="M 545 85Q 545 51.85 521.55 28.4 498.15 5 465 5L 85 5Q 51.85 5 28.4 28.4 19.5 37.3 14 47.65 5 64.45 5 85L 5 295Q 5 328.15 28.4 351.55 51.85 375 85 375L 465 375Q 498.15 375 521.55 351.55 545 328.15 545 295L 545 85 Z"/></g></defs><g transform="matrix( 1, 0, 0, 1, 0,0) "><use xlink:href="#ax7"/></g><text><tspan text-anchor="middle" x="263" y="250" font-size="200" id="svg_text" fill="#fff"></tspan></text><g id="toggle_arrow" transform="matrix( -0.7071075439453125, 0.70709228515625, -0.70709228515625, -0.7071075439453125, 988.35,-107.55) ">
+<path fill="#fff" stroke="none" d="
+M 765.6 243.2
+Q 761.25 238.8 755 238.8
+L 690.75 238.8
+Q 684.55 238.8 680.15 243.2 675.75 247.6 675.75 253.8 675.75 260.05 680.15 264.4 684.55 268.8 690.75 268.8
+L 718.8 268.8 664.05 323.5
+Q 659.65 327.95 659.65 334.15 659.65 340.35 664.05 344.75 668.5 349.15 674.7 349.15 680.9 349.15 685.3 344.75
+L 740 290 740 318.05
+Q 740 324.3 744.4 328.65 748.8 333.05 755 333.05 761.25 333.05 765.6 328.65 770 324.3 770 318.05
+L 770 253.8
+Q 770 247.6 765.6 243.2 Z"/>
+</g></svg>
+
+  <span i18n-w="saveimg">Save</span></a><!-- 1280 720 -->
+  <a class="hd" target="_blank" href="https://high-qr-code-generator.com/?hd=1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="24px" height="16px" viewBox="0 0 575 380"><defs><g id="a2f"><path fill="#777" stroke="none" d="M 607.1 133Q 607.1 99.85 583.65 76.4 560.25 53 527.1 53L 147.1 53Q 113.95 53 90.5 76.4 81.6 85.3 76.1 95.65 67.1 112.45 67.1 133L 67.1 343Q 67.1 376.15 90.5 399.55 113.95 423 147.1 423L 527.1 423Q 560.25 423 583.65 399.55 607.1 376.15 607.1 343L 607.1 133 Z"/></g><path id="a2s" stroke="#FFF" stroke-width="32" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M 150 220L 380 220 380 360 150 360 150 220 Z"/></defs><g transform="matrix( 1, 0, 0, 1, -62.1,-48) "><use xlink:href="#a2f"/></g><g id="svg_hd_anchor" transform="matrix( 1, 0, 0, 1, -313,-143) "><path fill="#FFF" stroke="none" d="M 765.6 243.2Q 761.25 238.8 755 238.8L 690.75 238.8Q 684.55 238.8 680.15 243.2 675.75 247.6 675.75 253.8 675.75 260.05 680.15 264.4 684.55 268.8 690.75 268.8L 718.8 268.8 664.05 323.5Q 659.65 327.95 659.65 334.15 659.65 340.35 664.05 344.75 668.5 349.15 674.7 349.15 680.9 349.15 685.3 344.75L 740 290 740 318.05Q 740 324.3 744.4 328.65 748.8 333.05 755 333.05 761.25 333.05 765.6 328.65 770 324.3 770 318.05L 770 253.8Q 770 247.6 765.6 243.2 Z"/></g><g transform="matrix( 1, 0, 0, 1, -71.6,-57.5) "><use xlink:href="#a2s"/></g></svg>
+  <span>HD</span></a>
+
+   <a class="withlogo" target="_blank" href="https://high-qr-code-generator.com/?logo=1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="24px" height="16px" viewBox="0 0 575 380"><defs><g id="af"><path fill="#777" stroke="none" d="M 544.35 305.75Q 543.65 305.15 543 304.55L 406.35 170.65 276.55 300.45Q 271.85 305.1 265.3 305.1 258.7 305.1 253.95 300.5L 201.95 249.1 77.6 374.7Q 81.25 375 85 375L 465 375Q 498.15 375 521.55 351.55 541.1 332.05 544.35 305.75M 545 85Q 545 51.85 521.55 28.4 498.15 5 465 5L 85 5Q 51.85 5 28.4 28.4 19.5 37.3 14 47.65 5 64.45 5 85L 5 295Q 5 328.15 28.4 351.55 35.5 358.65 43.55 363.65L 190.45 215.2Q 195.1 210.5 201.7 210.45 208.3 210.4 213.05 215.1L 265.15 266.55 394.9 136.8Q 399.55 132.1 406.15 132.1 412.7 132.05 417.4 136.7L 545 261.7 545 85 Z"/></g></defs><g transform="matrix( 1, 0, 0, 1, 0,0) "><use xlink:href="#af"/></g><g id="svg_logo_anchor" transform="matrix( 1, 0, 0, 1, -506,-236) "><path fill="#fff" stroke="none" d="M 703.65 360Q 703.65 333.85 685.1 315.35 666.6 296.8 640.45 296.8 614.3 296.8 595.8 315.35 577.25 333.85 577.25 360 577.25 386.15 595.8 404.65 614.3 423.2 640.45 423.2 666.6 423.2 685.1 404.65 703.65 386.15 703.65 360M 673.65 360Q 673.65 373.75 663.9 383.45 654.2 393.2 640.45 393.2 626.75 393.2 617 383.45 607.25 373.75 607.25 360 607.25 346.3 617 336.55 626.75 326.8 640.45 326.8 654.2 326.8 663.9 336.55 673.65 346.3 673.65 360 Z"/></g></svg>
+  <span>Logo</span></a>
+
+     <a class="bulk" target="_blank" href="https://high-qr-code-generator.com/bulk-qrcode.html">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="24px" height="16px" viewBox="0 0 575 380"><defs><g id="a3f"><path fill="#777" stroke="none" d="M 544.35 305.75Q 543.65 305.15 543 304.55L 406.35 170.65 276.55 300.45Q 271.85 305.1 265.3 305.1 258.7 305.1 253.95 300.5L 201.95 249.1 77.6 374.7Q 81.25 375 85 375L 465 375Q 498.15 375 521.55 351.55 541.1 332.05 544.35 305.75M 545 85Q 545 51.85 521.55 28.4 498.15 5 465 5L 85 5Q 51.85 5 28.4 28.4 19.5 37.3 14 47.65 5 64.45 5 85L 5 295Q 5 328.15 28.4 351.55 35.5 358.65 43.55 363.65L 190.45 215.2Q 195.1 210.5 201.7 210.45 208.3 210.4 213.05 215.1L 265.15 266.55 394.9 136.8Q 399.55 132.1 406.15 132.1 412.7 132.05 417.4 136.7L 545 261.7 545 85 Z"/></g></defs><g transform="matrix( 1, 0, 0, 1, 0,0) "><use xlink:href="#a3f"/></g><g id="svg_bulk_anchor" transform="matrix( 1, 0, 0, 1, 0, 0) "><circle cx="110" cy="110" r="48" stroke-width="28" stroke="#fff" fill="none"/><circle cx="250" cy="110" r="48" stroke-width="28" stroke="#fff" fill="none"/><circle cx="390" cy="110" r="48" stroke-width="28" stroke="#fff" fill="none"/></g></svg>
+  <span>Bulk</span></a>
+
+</div>
+<button id="rate5"><b i18n-w="rate5">Rate us 5 stars!</b></button>
+<button id="qrcode-regenerate" class='pure-button pure-button-primary'>QR!</button>
+<span class="popup-footer-right">
+<a id="credit_get" target="_blank" href="https://chrome.google.com/webstore/detail/quick-qr/afpbjjgbdimpioenaedcjgkaigggcdpp" i18n-w="getthis">Get this</a>
+<a id="hide_reviews" style="display:none"; target="_blank" href="https://chrome.google.com/webstore/detail/quick-qr/afpbjjgbdimpioenaedcjgkaigggcdpp/reviews"></a>
+|
+<a id="credit_support" target="_blank" href="https://chrome.google.com/webstore/detail/quick-qr/afpbjjgbdimpioenaedcjgkaigggcdpp/support" i18n-w="support">Support</a>
+<span id="ctxt-only"> | <a href="https://www.facebook.com/quickqr" target="_blank">Facebook Page</a></span>
+</span>
+<span class="popup-footer-left">
+<span id="version_text">Version: <span id="version">-</span></span>
+<a id="settings" href="options.html#pop">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 54 54" style="enable-background:new 0 0 54 54;" xml:space="preserve" width="14px" height="14px">
+<path d="M51.22,21h-5.052c-0.812,0-1.481-0.447-1.792-1.197s-0.153-1.54,0.42-2.114l3.572-3.571  c0.525-0.525,0.814-1.224,0.814-1.966c0-0.743-0.289-1.441-0.814-1.967l-4.553-4.553c-1.05-1.05-2.881-1.052-3.933,0l-3.571,3.571c-0.475,0.475-0.997,0.574-1.352,0.574c-0.5,0-0.997-0.196-1.364-0.539C33.324,8.984,33,8.534,33,7.832V2.78C33,1.247,31.753,0,30.22,0H23.78C22.247,0,21,1.247,21,2.78v5.052c0,1.218-0.997,1.945-1.961,1.945c-0.354,0-0.876-0.1-1.351-0.574  l-3.571-3.571c-1.052-1.052-2.883-1.05-3.933,0l-4.553,4.553c-0.525,0.525-0.814,1.224-0.814,1.967c0,0.742,0.289,1.44,0.814,1.966l3.572,3.571c0.573,0.574,0.73,1.364,0.42,2.114S8.644,21,7.832,21H2.78C1.247,21,0,22.247,0,23.78v6.438C0,31.752,1.247,33,2.78,33h5.052c0.812,0,1.481,0.447,1.792,1.197s0.153,1.54-0.42,2.114l-3.572,3.571c-0.525,0.525-0.814,1.224-0.814,1.966c0,0.743,0.289,1.441,0.814,1.967l4.553,4.553c1.051,1.051,2.881,1.053,3.933,0l3.571-3.571c0.475-0.475,0.997-0.574,1.352-0.574c0.963,0,1.96,0.728,1.96,1.945v5.051C21,52.752,22.247,54,23.78,54h6.439c1.533,0,2.78-1.248,2.78-2.781v-5.051c0-1.218,0.997-1.945,1.96-1.945c0.354,0,0.877,0.1,1.352,0.574l3.571,3.571c1.052,1.052,2.883,1.05,3.933,0l4.553-4.553  c0.525-0.525,0.814-1.224,0.814-1.967c0-0.742-0.289-1.44-0.814-1.966l-3.572-3.571c-0.573-0.574-0.73-1.364-0.42-2.114  S45.356,33,46.168,33h5.052c1.533,0,2.78-1.248,2.78-2.781V23.78C54,22.247,52.753,21,51.22,21z M34,27c0,3.859-3.141,7-7,7  s-7-3.141-7-7s3.141-7,7-7S34,23.141,34,27z" fill="#999"/>
+</svg>
+<span i18n-w="settings">Settings</span></a>
+</span>
+</div>
+<a id="fixed_pop" title="Open in a fixed window...">
+  <svg viewBox="0 0 438.536 438.536"><g>
+  <path d="M414.41,24.123C398.333,8.042,378.963,0,356.315,0H82.228C59.58,0,40.21,8.042,24.126,24.123
+    C8.045,40.207,0.003,59.576,0.003,82.225v274.084c0,22.647,8.042,42.018,24.123,58.102c16.084,16.084,35.454,24.126,58.102,24.126
+    h274.084c22.648,0,42.018-8.042,58.095-24.126c16.084-16.084,24.126-35.454,24.126-58.102V82.225
+    C438.532,59.576,430.49,40.204,414.41,24.123z M365.449,228.402c0,7.994-3.717,13.606-11.136,16.844
+    c-2.471,0.951-4.859,1.427-7.139,1.427c-5.134,0-9.418-1.811-12.847-5.424l-41.11-41.112L140.764,352.599
+    c-3.621,3.614-7.9,5.425-12.85,5.425c-4.952,0-9.235-1.811-12.851-5.425l-29.121-29.126c-3.617-3.61-5.426-7.901-5.426-12.847
+    c0-4.944,1.809-9.229,5.426-12.843l152.462-152.464l-41.113-41.112c-5.902-5.52-7.233-12.178-3.999-19.985
+    c3.234-7.421,8.852-11.136,16.846-11.136h137.037c4.948,0,9.232,1.81,12.854,5.428c3.613,3.614,5.421,7.898,5.421,12.847V228.402z"
+    />
+</g>
+</svg>
+
+</a>
+<script type="text/javascript" src="assets/js/popup.js"></script>
+</body>
+</html>

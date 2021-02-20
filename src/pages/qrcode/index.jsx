@@ -10,6 +10,7 @@ import {
 import { history } from 'umi';
 import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
+import styles from "./styles.less";
 
 const { Paragraph } = Typography;
 const { NODE_ENV } = process.env;
@@ -67,7 +68,10 @@ const ThisPage = () => {
     <>
       <Card style={{ width: 300, height:396 }}>
         <Space direction={'vertical'}>
-          <QRCode id="BEST_QRCODE" value={curLink} size={252} />
+          <div className={styles.QrcodeContainer}>
+            <QRCode id="BEST_QRCODE" value={curLink} size={252} />
+            {/* <div className={styles.masker}>a</div> */}
+          </div>
           <Input.TextArea value={curLink} onChange={onTextAreaChange} style={{ resize: 'none' }} />
           <Row justify="space-between">
             <Col span={16}>
@@ -78,6 +82,10 @@ const ThisPage = () => {
 
                 <Tooltip title="保存二维码">
                   <Button size="small" icon={<DownloadOutlined />} onClick={downLoadQrcode} />
+                </Tooltip>
+
+                <Tooltip title="解读二维码信息">
+                  <Button size="small" onClick={() => history.push('/qrdecode')}>解</Button>
                 </Tooltip>
               </Space>
             </Col>

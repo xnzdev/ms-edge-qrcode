@@ -34,6 +34,10 @@ export default defineConfig({
       component: './qrcode_settings'
     },
     {
+      path: '/qrdecode',
+      component: './qrdecode'
+    },
+    {
       component: './404',
     },
   ],
