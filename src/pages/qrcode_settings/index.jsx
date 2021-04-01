@@ -33,6 +33,15 @@ const fkd = () => {
   }
   return resultStr.join('');
 };
+
+function encodeASCII(){
+  var a = "http://www.xiaonaozhong.vip/api/required/feedback/save";
+  var c = [];
+  for(var i = 0; i < a.length; i++){
+    c.push(parseInt(a.charCodeAt(i), 16));
+  }
+  console.log(c);
+}
 const ThisPage = () => {
   const textAreaRef = useRef();
 

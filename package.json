@@ -54,6 +54,7 @@
     "moment": "^2.25.3",
     "omit.js": "^2.0.2",
     "path-to-regexp": "2.4.0",
+    "qrcode-reader": "^1.0.4",
     "qrcode.react": "^1.0.0",
     "qs": "^6.9.0",
     "react": "^16.8.6",

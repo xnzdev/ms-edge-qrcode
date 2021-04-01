@@ -14,10 +14,20 @@
     "default_popup": "/index.html"
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "contextMenus",
+    "file://*/*",
+    "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+    "https://*/*"// 可以通过executeScript或者insertCSS访问的网站
   ],
   "background":{
-    "scripts": ["/umi.9f347862.js"],
-    "persistent": false
+    "scripts": ["/umi.js","/pubAssets/newdecoder.js","/pubAssets/menus.js"]
+    // "persistent": false
   }
+  // "content_scripts":[
+  //   {
+  //     "matches": ["*://*/*"], //*：任意字符，注入js脚本的网页
+  //     "js": ["/pubAssets/contents.js"] //注入网页的js脚本
+  //   }
+  // ]
 }

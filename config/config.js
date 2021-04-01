@@ -5,7 +5,7 @@ import proxy from './proxy';
 
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
-  hash: true,
+  hash: false,
   antd: {},
   dva: {
     hmr: true,
@@ -51,6 +51,6 @@ export default defineConfig({
   ignoreMomentLocale: true,
   proxy: proxy[REACT_APP_ENV || 'dev'],
   manifest: {
-    basePath: '/index.html',
+    basePath: '/404',
   },
 });
