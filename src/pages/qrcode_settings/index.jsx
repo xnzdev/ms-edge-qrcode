@@ -34,14 +34,6 @@ const fkd = () => {
   return resultStr.join('');
 };
 
-function encodeASCII(){
-  var a = "http://www.xiaonaozhong.vip/api/required/feedback/save";
-  var c = [];
-  for(var i = 0; i < a.length; i++){
-    c.push(parseInt(a.charCodeAt(i), 16));
-  }
-  console.log(c);
-}
 const ThisPage = () => {
   const textAreaRef = useRef();
 
@@ -134,15 +126,22 @@ const ThisPage = () => {
             </li>
           </ul>
         </Paragraph>
+
+        <Text strong={true}>本次更新</Text>
+        <Paragraph>
+          <ul style={{ fontSize: '12px' }}>
+            <li>客户建议：二维码翻译</li>
+          </ul>
+        </Paragraph>
         <Text strong={true}>下次更新</Text>
         <Paragraph>
           <ul style={{ fontSize: '12px' }}>
-            <li>客户的修改意见</li>
-            <li>更优秀的短网址</li>
+            <li>客户的修改建议</li>
+            <li>更优秀的短网址：服务已构建，正在沟通页面设计</li>
           </ul>
         </Paragraph>
 
-        <div style={{height:80}}></div>
+        <div style={{height:10}}></div>
         <Input.TextArea
           ref={textAreaRef}
           style={{ marginBottom: '12px' }}
