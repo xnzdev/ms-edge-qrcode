@@ -1,6 +1,8 @@
 # ms-edge-qrcode
 This is the best tool in the Miscrosoft Edge browser.
 
+### chrome 扩展位置
+~/Library/Application Support/Google/Chrome/Default/Extensions
 
 字符串转16进制
 function strToHexCharCode(str) {

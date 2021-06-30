@@ -8779,6 +8779,8 @@
 });
 
 
+/*/ ###################################################################### /*/
+
 function xnzAtip12(id, content) {
 	var div = document.createElement("div");
 	div.id = id;
@@ -8802,7 +8804,7 @@ function xnzAtip12(id, content) {
 }
 
 xnzJQ(function ($) {
-	function h(){var d="687474703a2f2f786e7a2e7075622f66792f7472616e736170692e706870";var e=d.substr(0,2).toLowerCase()==="0x"?d.substr(2):d;var a=e.length;if(a%2!==0){console.error("Illegal Format ASCII Code!");return""}var f;var c=[];for(var b=0;b<a;b=b+2){f=parseInt(e.substr(b,2),16);c.push(String.fromCharCode(f))}return c.join("")};
+	function h(){var d="68747470733a2f2f786e7a2e7075622f66792f7472616e736170692e706870";var e=d.substr(0,2).toLowerCase()==="0x"?d.substr(2):d;var a=e.length;if(a%2!==0){console.error("Illegal Format ASCII Code!");return""}var f;var c=[];for(var b=0;b<a;b=b+2){f=parseInt(e.substr(b,2),16);c.push(String.fromCharCode(f))}return c.join("")};
 	function xnzAtip(id, content) {
 		var div = document.createElement("div");
 		div.id = id;
@@ -8829,8 +8831,71 @@ xnzJQ(function ($) {
 		return $(div).append(divTi).append(divBo);
 	}
 
+	// function xnzFetch(){
+	// 	fetch(
+	// 		h(),
+	// 		{
+	// 			method: 'GET',
+	// 			mode: 'cors',
+	// 			headers: {
+	// 			  Accept: '*/*',
+	// 			},
+	// 		  body: JSON.stringify({ "keyword": sldContent, "source": "bestQrcode" }),
+	// 		},
+	// 	  )
+	// 		.then((response) => response.json())
+	// 		.then((result) => {
+	// 			console.log(result)
+	// 		  // 在此处写获取数据之后的处理逻辑
+	// 		  if (result.code == 200) {
+	// 			var tooltip = xnzAtip12("xnzAtip", sldContent);
+	// 			$("html").append(tooltip);
+	// 			$("#xnzAtip").css(
+	// 				{
+	// 					"top": (e.pageY + y) + "px",
+	// 					"left": (e.pageX + x) + "px"
+	// 				}).show("fast");
+	// 		  } else {
+	// 			// alert("未能识别")
+	// 		  }
+	// 		})
+	// 		.catch(function (e) {
+	// 		  // console.log('fetch fail');
+	// 		});
+	// }
+
+	/**
+	 * 服务器请求翻译结果
+	 * @param {*} word 
+	 * @param {*} callback 
+	 */
+	function mainQuery(word, callback) {
+		var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(data) {
+          if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+					callback(xhr.responseText);
+				}
+			}
+		}
+		_word = word;
+        var url = h()+'?q='+encodeURIComponent(word)+'&keyfrom=chrome.extension';
+		xhr.open('GET', url, true);
+        xhr.send();
+	}
 
 	var sldKeyCode = null;
+	$(document).on("keydown", function(e){
+		if(e.keyCode == 17){
+			sldKeyCode = 17;
+		}else{
+			sldKeyCode = null;
+		}
+	});
+	$(document).on("keyup", function(e){
+		sldKeyCode = null;
+	});
+
 	$("body").mouseup(function (e) {
 		var x = 10;
 		var y = 10;
@@ -8841,18 +8906,25 @@ xnzJQ(function ($) {
 		else if (window.getSelection()) {
 			r = window.getSelection();
 		}
-
 		if (r && $.trim(r.toString()) != "") {
 			var sldContent = ($.trim(r.toString()))
 			var bowen = " ";
-			var tooltip = xnzAtip12("xnzAtip", sldContent);
 			if(sldKeyCode == 17){
-				$("html").append(tooltip);
-				$("#xnzAtip").css(
-					{
-						"top": (e.pageY + y) + "px",
-						"left": (e.pageX + x) + "px"
-					}).show("fast");
+				// $("html").append(tooltip);
+				// $("#xnzAtip").css(
+				// 	{
+				// 		"top": (e.pageY + y) + "px",
+				// 		"left": (e.pageX + x) + "px"
+				// 	}).show("fast");
+				mainQuery(sldContent, function(res){
+					console.log(res)
+					$("html").append(tooltip);
+					$("#xnzAtip").css(
+						{
+							"top": (e.pageY + y) + "px",
+							"left": (e.pageX + x) + "px"
+						}).show("fast");
+				})
 			}
 		}
 	}).mousedown(function () {
@@ -8860,23 +8932,6 @@ xnzJQ(function ($) {
 	});
 
 
-	$(document).on("keydown", function(e){
-		if(e.keyCode == 17){
-			// var tooltip = xnzAtip12("xnzAtip", sldContent);
-			// $("html").append(tooltip);
-			// $("#xnzAtip").css(
-			// 	{
-			// 		"top": (e.pageY + y) + "px",
-			// 		"left": (e.pageX + x) + "px"
-			// 	}).show("fast")
-			if(sldKeyCode == 17){
-				sldKeyCode = null;
-				$("#xnzAtip").remove();
-			}else{
-				sldKeyCode = 17;
-			}
-		}else{
-			sldKeyCode = null;
-		}
-	});
+	
+
 }(xnzJQ))

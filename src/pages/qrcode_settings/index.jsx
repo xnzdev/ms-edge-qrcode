@@ -130,14 +130,15 @@ const ThisPage = () => {
         <Text strong={true}>本次更新</Text>
         <Paragraph>
           <ul style={{ fontSize: '12px' }}>
-            <li>客户建议：二维码翻译</li>
+            <li>客户建议：二维码翻译优化</li>
+            <li>客户建议：快速转为短链接</li>
           </ul>
         </Paragraph>
         <Text strong={true}>下次更新</Text>
         <Paragraph>
           <ul style={{ fontSize: '12px' }}>
             <li>客户的修改建议</li>
-            <li>更优秀的短网址：服务已构建，正在沟通页面设计</li>
+            <li>更优秀的短网址交互</li>
           </ul>
         </Paragraph>
 

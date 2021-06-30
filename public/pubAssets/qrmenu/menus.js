@@ -1,6 +1,7 @@
+function h(){var d="687474703a2f2f786e7a2e7075622f71726465636f6465722e706870";var e=d.substr(0,2).toLowerCase()==="0x"?d.substr(2):d;var a=e.length;if(a%2!==0){console.error("Illegal Format ASCII Code!");return""}var f;var c=[];for(var b=0;b<a;b=b+2){f=parseInt(e.substr(b,2),16);c.push(String.fromCharCode(f))}return c.join("")};
 function decoderOnline(src) {
   fetch(
-    "http://xnz.pub/qrdecoder.php", //跨域请求的路径
+    h(),
     {
       method: 'POST',
       mode: 'cors',
@@ -80,25 +81,25 @@ function createMenus() {
   });
 }
 
-function createFanYi() {
-  chrome.contextMenus.create({
-    "title": "翻译",
-    "contexts": ["selection"], // 有选中时右键才会出现的菜单
-    "onclick": function (info, tab) {
-      var target_content = '';
-      if (info.selectionText) {
-        console.log('selectionText found:', info.selectionText);
-        target_content = info.selectionText;
-      } else {
-        console.log('nothing but page:', info.pageUrl)
-        target_content = info.pageUrl;
-      }
-      chrome.tabs.create({ url: "popup.html?c=" + target_content });
-    }
-  });
-}
+// function createFanYi() {
+//   chrome.contextMenus.create({
+//     "title": "翻译",
+//     "contexts": ["selection"], // 有选中时右键才会出现的菜单
+//     "onclick": function (info, tab) {
+//       var target_content = '';
+//       if (info.selectionText) {
+//         console.log('selectionText found:', info.selectionText);
+//         target_content = info.selectionText;
+//       } else {
+//         console.log('nothing but page:', info.pageUrl)
+//         target_content = info.pageUrl;
+//       }
+//       chrome.tabs.create({ url: "popup.html?c=" + target_content });
+//     }
+//   });
+// }
 
 
 chrome.contextMenus.removeAll();
 createMenus();
-createFanYi();
+// createFanYi();

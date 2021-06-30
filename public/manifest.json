@@ -21,13 +21,35 @@
     "https://*/*"// 可以通过executeScript或者insertCSS访问的网站
   ],
   "background":{
-    "scripts": ["/umi.js","/pubAssets/newdecoder.js","/pubAssets/menus.js"]
+    "scripts": [
+      "/umi.js",
+      // 右键二维码相关
+      "/pubAssets/qrmenu/newdecoder.js", 
+      "/pubAssets/qrmenu/menus.js",
+      // 翻译相关
+      "/pubAssets/fanyi/options.js",
+      "/pubAssets/fanyi/background.js"
+      // 可用执行上一个js内提供的方法
+    ]
     // "persistent": false
   },
   "content_scripts":[
     {
+      // "all_frames": true,
+      // "match_about_blank": true,
       "matches": ["*://*/*"], //*：任意字符，注入js脚本的网页
-      "js": ["/pubAssets/md5.js","/pubAssets/contents.js"] //注入网页的js脚本
+      // "matches": [ "\u003Call_urls>" ],
+      // "run_at": "document_end",
+      "js": [
+        // "/pubAssets/md5.js",
+        // "/pubAssets/contents.js", 
+        "/pubAssets/fanyi/speech.js",
+        "/pubAssets/fanyi/lookup.js"
+        ] //注入网页的js脚本
     }
-  ]
+  ],
+  "web_accessible_resources": [ 
+    // "/pubAssets/fanyi/ab20.png", 
+    "/pubAssets/fanyi/ydd-sprite.png", 
+    "/pubAssets/fanyi/sound.png" ]
 }
