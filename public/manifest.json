@@ -1,6 +1,6 @@
 {
   "name": "Best QRcode(快速生成二维码)",
-  "version": "6.1.4",
+  "version": "6.1.3",
   "manifest_version": 2,
   "description": "最好的二维码生成器(简洁、高效、免费)，Google Chrome 可用，国内官方可下载. A Chromium Extension to show the QRcode of the link.",
   "icons": {
